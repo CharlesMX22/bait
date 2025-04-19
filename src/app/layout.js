@@ -16,7 +16,7 @@ export const metadata = {
   description: "Si te queda..",
   openGraph: {
     title: "Instagram",
-    description: "El amor es..",
+    description: "Si te queda...",
     url: "http://instagranm.com.mx/",
     images: [
       {
