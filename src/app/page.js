@@ -5,18 +5,8 @@ import styles from "./page.module.css";
 export default function Home() {
   const [showGif, setShowGif] = useState(true);
   const [showError, setShowError] = useState(false);
-  const [blocked, setBlocked] = useState(false);
 
   useEffect(() => {
-    const visitCount = parseInt(localStorage.getItem('visitCount') || '0', 10);
-
-    if (visitCount >= 2) {
-      setBlocked(true);
-      return;
-    }
-
-    localStorage.setItem('visitCount', visitCount + 1);
-
     async function logIPandLocation() {
       const ipRes = await fetch('https://api.ipify.org?format=json');
       const { ip } = await ipRes.json();
@@ -57,16 +47,6 @@ export default function Home() {
 
     return () => clearTimeout(gifTimer);
   }, []);
-
-  if (blocked) {
-    return (
-      <div className={styles.page}>
-        <main className={styles.main}>
-          <p>Acceso denegado.</p>
-        </main>
-      </div>
-    );
-  }
 
   return (
     <>
