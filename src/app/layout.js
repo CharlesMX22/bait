@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Instagram",
-  description: "El amor es..",
+  description: "Si te queda..",
   openGraph: {
     title: "Instagram",
     description: "El amor es..",
