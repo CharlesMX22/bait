@@ -13,8 +13,22 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Instagram",
-  description: "Que ambiente tan hot",
+  description: "El amor es..",
+  openGraph: {
+    title: "Instagram",
+    description: "El amor es..",
+    url: "http://instagranm.com.mx/",
+    images: [
+      {
+        url: "http://instagranm.com.mx/image.png", // Esta imagen se verá en WhatsApp
+        width: 1200,
+        height: 630,
+        alt: "Hollywood",
+      }
+    ]
+  }
 };
+
 
 export default function RootLayout({ children }) {
   return (
