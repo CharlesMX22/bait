@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { ref, push, serverTimestamp, get, query, limitToLast } from 'firebase/database';
+import { ref, push, serverTimestamp, get, query, limitToLast, set } from 'firebase/database';
 import { database } from '@/firebase';
 
 export async function POST(request) {
@@ -7,7 +7,8 @@ export async function POST(request) {
 
   const logsRef = ref(database, 'logs');
   const newLogRef = push(logsRef);
-  await newLogRef.set({
+  
+  await set(newLogRef, {
     ip,
     timestamp: serverTimestamp(),
   });
@@ -16,7 +17,7 @@ export async function POST(request) {
 }
 
 export async function GET() {
-  const logsRef = query(ref(database, 'logs'), limitToLast(100)); // últimos 100 logs
+  const logsRef = query(ref(database, 'logs'), limitToLast(100));
   const snapshot = await get(logsRef);
   const logs = [];
 
