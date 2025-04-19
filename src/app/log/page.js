@@ -1,0 +1,28 @@
+'use client';
+import { useEffect, useState } from 'react';
+
+export default function LogPage() {
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/log')
+      .then((res) => res.json())
+      .then((data) => {
+        const orderedLogs = data.logs.sort((a,b) => b.timestamp - a.timestamp);
+        setLogs(orderedLogs);
+      });
+  }, []);
+
+  return (
+    <div style={{ padding: '20px', fontFamily: 'monospace' }}>
+      <h2>Logs de visitantes (últimos 100)</h2>
+      <ul>
+        {logs.map((log, idx) => (
+          <li key={idx}>
+            IP: {log.ip} - {new Date(log.timestamp).toLocaleString()}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
