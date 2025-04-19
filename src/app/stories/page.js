@@ -55,7 +55,7 @@ export default function Home() {
           {showGif ? (
             <img src="/instagram_icon.png" alt="Cargando..." width="50" height="50" />
           ) : (
-            <p>Error en el sitio web</p>
+            <p>No pudimos cargar instagram</p>
           )}
         </main>
       </div>
