@@ -1,18 +1,27 @@
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata = {
-  title: "Mi sitio increíble",
-  description: "Descripción corta y atractiva del sitio.",
-  openGraph: {
-    title: "Mi sitio increíble",
-    description: "Descripción corta y atractiva del sitio.",
-    url: "https://imagem.netlify.app/",
-    images: ["https://imagem.netlify.app/Instagram_icon.png"]
-  }
+  title: "Instagram",
+  description: "Subiste nueva foto",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <body>{children}</body>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
