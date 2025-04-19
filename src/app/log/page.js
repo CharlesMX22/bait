@@ -22,7 +22,8 @@ export default function LogPage() {
             IP: {log.ip} <br />
             Ubicación: {log.location?.country}, {log.location?.regionName}, {log.location?.city} <br />
             Coordenadas: ({log.location?.lat}, {log.location?.lon})<br />
-            Fecha: {new Date(log.timestamp).toLocaleString()}
+            Fecha: {new Date(log.timestamp).toLocaleString()}<br />
+            <strong>User-Agent:</strong> {log.userAgent}
             <hr />
           </li>
         ))}
