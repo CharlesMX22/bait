@@ -5,7 +5,7 @@ export const metadata = {
     title: "Mi sitio increíble",
     description: "Descripción corta y atractiva del sitio.",
     url: "https://imagem.netlify.app/",
-    images: ["https://imagem.netlify.app/imagen-para-whatsapp.jpg"]
+    images: ["https://imagem.netlify.app/Instagram_icon.png"]
   }
 };
 
