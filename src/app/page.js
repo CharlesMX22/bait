@@ -1,6 +1,7 @@
 'use client'
 import { useEffect } from 'react';
 import styles from "./page.module.css";
+import Head from 'next/head'
 
 export default function Home() {
   useEffect(() => {
@@ -19,6 +20,16 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <Head>
+      <title>Mi sitio increíble</title>
+      <meta property="og:title" content="Mi sitio increíble" />
+      <meta property="og:description" content="Descripción corta y atractiva del sitio." />
+      <meta property="og:url" content="https://imagem.netlify.app/" />
+      <meta property="og:image" content="https://imagem.netlify.app/imagen-para-whatsapp.jpg" />
+    </Head>
+   
+
     <div className={styles.page}>
       <main className={styles.main}>
         <iframe
@@ -32,5 +43,6 @@ export default function Home() {
         ></iframe>
       </main>
     </div>
+    </>
   );
 }
