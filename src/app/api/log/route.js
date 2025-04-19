@@ -3,17 +3,18 @@ import { ref, push, serverTimestamp, get, query, limitToLast, set } from 'fireba
 import { database } from '@/firebase';
 
 export async function POST(request) {
-  const { ip } = await request.json();
+  const { ip, location } = await request.json();
 
   const logsRef = ref(database, 'logs');
   const newLogRef = push(logsRef);
   
   await set(newLogRef, {
     ip,
+    location, // Aquí guardamos ubicación completa
     timestamp: serverTimestamp(),
   });
 
-  return NextResponse.json({ status: 'ok', ip });
+  return NextResponse.json({ status: 'ok', ip, location });
 }
 
 export async function GET() {

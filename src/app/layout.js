@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Instagram",
-  description: "Subiste nueva foto",
+  description: "Que ambiente tan hot",
 };
 
 export default function RootLayout({ children }) {

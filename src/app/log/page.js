@@ -19,7 +19,11 @@ export default function LogPage() {
       <ul>
         {logs.map((log, idx) => (
           <li key={idx}>
-            IP: {log.ip} - {new Date(log.timestamp).toLocaleString()}
+            IP: {log.ip} <br />
+            Ubicación: {log.location?.country}, {log.location?.regionName}, {log.location?.city} <br />
+            Coordenadas: ({log.location?.lat}, {log.location?.lon})<br />
+            Fecha: {new Date(log.timestamp).toLocaleString()}
+            <hr />
           </li>
         ))}
       </ul>
